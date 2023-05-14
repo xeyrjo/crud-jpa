@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h1 th:text="${titulo}"></h1>
+
+  <form th:action="@{/crear}" th:object="${cliente}" method="POST">
+    <table>
+      <tr>
+        <td>Nombre</td>
+        <td>
+          <input type="text" th:field="*{nombre}" />
+          <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+        </td>
+      </tr>
+      <tr>
+        <td>Apellido</td>
+        <td>
+          <input type="text" th:field="*{apellido}" />
+          <small th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+        </td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>
+          <input type="email" th:field="*{email}" />
+          <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="Crear Cliente" />
+        </td>
+      </tr>
+    </table>
+
+    <!-- Id oculto -->
+    <!--
+    <input type="hidden" th:field="*{id}" />
+    -->
+
+  </form>
+
+</body>
+</html>
